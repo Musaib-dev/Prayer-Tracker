@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayer Tracker</title>
+    <link rel="icon" type="image/x-icon" href="App-icon.png">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="header">
+        Prayer Tracker
+        <div class="time-display" id="timeDisplay"></div>
+    </div>
+
+    <div class="container">
+        <div class="current-prayer" id="currentPrayer">Current prayer: Calculating...</div>
+        <div class="next-prayer" id="nextPrayer">Next prayer: Calculating...</div>
+        
+        <div class="chart-container">
+            <canvas id="progressChart"></canvas>
+        </div>
+        
+        <div class="prayer-stats" id="prayerStats"></div>
+        
+        <div id="prayerList"></div>
+        
+        <div class="button-group">
+            <button class="theme-switch" onclick="toggleTheme()">Switch Theme</button>
+            <button class="reset-button" onclick="resetToday()">Reset Today</button>
+        </div>
+        
+        <button class="calendar-button" onclick="openCalendar()">View Calendar</button>
+    </div>
+
+    <!-- Calendar Modal -->
+    <div id="calendarModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeCalendar()">&times;</span>
+            <div class="calendar-header">
+                <button class="calendar-nav" onclick="changeMonth(-1)">&#9664;</button>
+                <div class="calendar-title" id="calendarTitle">Month Year</div>
+                <button class="calendar-nav" onclick="changeMonth(1)">&#9654;</button>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div id="dayDetail" class="day-detail" style="display: none;"></div>
+        </div>
+    </div>
+
+
+    
+    <script src="script.js"></script>
+        
+    
+ 
+ 
+
+<div class="footer-watermark">Created by Mohammad Musaib</div>
+</body>
+</html>

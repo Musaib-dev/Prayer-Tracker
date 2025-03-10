@@ -1,0 +1,287 @@
+:root {
+    --background-color: #1C1C1C;
+    --text-color: #FFFFFF;
+    --header-background: #333333;
+    --checkbox-background: #444444;
+    --checkbox-border: #A3BE8C;
+    --modal-background: #2E2E2E;
+    --completed-color: #A3BE8C;
+    --remaining-color: #4C4F50;
+    --highlight-color: #BF616A;
+    --button-background: #555555;
+    --button-hover: #666666;
+}
+
+.light-theme {
+    --background-color: #FFFFFF;
+    --text-color: #000000;
+    --header-background: #F1F1F1;
+    --checkbox-background: #E0E0E0;
+    --checkbox-border: #A3BE8C;
+    --modal-background: #F9F9F9;
+    --completed-color: #A3BE8C;
+    --remaining-color: #D3D3D3;
+    --highlight-color: #E57373;
+    --button-background: #DADADA;
+    --button-hover: #EEEEEE;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-bottom: 20px;
+}
+
+.header {
+    background-color: var(--header-background);
+    color: var(--text-color);
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.time-display {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+#prayerList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Increased spacing between checkbox items */
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 15px; /* Increased padding for larger clickable area */
+    background-color: var(--checkbox-background);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.checkbox-item input[type="checkbox"] {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--checkbox-border);
+    border-radius: 6px;
+    margin-right: 10px;
+    background-color: var(--modal-background);
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: var(--completed-color);
+    border-color: var(--completed-color);
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+    content: "✓";
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.calendar-button, .reset-button, .theme-switch {
+    padding: 12px;
+    background-color: var(--button-background);
+    color: var(--text-color);
+    border: none;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+
+.calendar-button:hover, .reset-button:hover, .theme-switch:hover {
+    background-color: var(--button-hover);
+}
+
+.chart-container {
+    width: 200px;
+    height: 200px;
+    margin: 15px 0;
+}
+
+.prayer-stats {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--modal-background);
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-button {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Calendar styles */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.calendar-nav {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.calendar-title {
+    font-size: 1.2rem;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid transparent;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background-color: var(--button-hover);
+}
+
+.current-day {
+    border: 2px solid var(--highlight-color);
+}
+
+.day-with-data {
+    position: relative;
+}
+
+.day-with-data::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--completed-color);
+}
+
+.day-detail {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--checkbox-background);
+    border-radius: 8px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.button-group button {
+    flex: 1;
+}
+
+.current-prayer, .next-prayer {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: var(--checkbox-background);
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* Watermark Footer */
+.footer-watermark {
+position: fixed;
+bottom: 10px;
+right: 10px;
+color: rgba(255, 255, 255, 0.5);
+font-size: 0.9rem;
+z-index: 500;
+pointer-events: none;
+font-family: Arial, sans-serif;
+}
+
+.light-theme .footer-watermark {
+color: rgba(0, 0, 0, 0.5);
+}
